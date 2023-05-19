@@ -12,7 +12,7 @@
           "@protected": true,
           "id": "@id",
           "type": "@type",
-          "vocab": "https://github.com/megabyte0x/claimed/blob/main/schema/rewardVerification/rewardVerification-vacab.md#",
+          "vocab": "https://github.com/megabyte0x/claimed/blob/main/schema/rewardVerification/rewardVerification-vocab.md#",
           "xsd": "http://www.w3.org/2001/XMLSchema#",
             "prizeId": {
               "@id": "vocab:prizeId",
