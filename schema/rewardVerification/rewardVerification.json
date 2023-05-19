@@ -81,7 +81,7 @@
     },
     "credentialSubject": {
       "type": "object",
-      "required": ["id", "isWinner", "prizeId"],
+      "required": ["id", "isWinner"],
       "properties": {
         "id": {
           "title": "Credential Subject ID",
@@ -89,12 +89,7 @@
           "format": "uri"
         },
         "isWinner": {
-          "title": "Is Winner",
           "type": "boolean"
-        },
-        "prizeId": {
-          "title": "Prize ID",
-          "type": "string"
         }
       }
     }
