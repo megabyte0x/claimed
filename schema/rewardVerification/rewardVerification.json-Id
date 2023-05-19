@@ -1,0 +1,29 @@
+{
+    "@context": [
+      {
+        "@version": 1.1,
+        "@protected": true,
+        "id": "@id",
+        "type": "@type",
+      "RewardVerification": {
+        "@id": "https://raw.githubusercontent.com/megabyte0x/calimed/main/schema/rewardVerification/rewardVerification.json-Id#RewardVerification",
+        "@context": {
+          "@version": 1.1,
+          "@protected": true,
+          "id": "@id",
+          "type": "@type",
+          "vocab": "https://github.com/megabyte0x/claimed/blob/main/schema/rewardVerification/rewardVerification-vacab.md#",
+          "xsd": "http://www.w3.org/2001/XMLSchema#",
+            "prizeId": {
+              "@id": "vocab:prizeId",
+              "@type": "xsd:string"
+            },
+            "isWinner": {
+              "@id": "vocab:isWinner",
+              "@type": "xsd:boolean"
+            }
+          }
+        }
+      }
+    ]
+  }

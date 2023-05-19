@@ -3,7 +3,7 @@
   "type": "object",
   "$metadata": {
     "uris": {
-      "jsonLdContext": "https://raw.githubusercontent.com/megabyte0x/claimed/main/schema/rewardVerification/rewardVerification.jsonId",
+      "jsonLdContext": "https://raw.githubusercontent.com/megabyte0x/claimed/main/schema/rewardVerification/rewardVerification.json-Id",
       "jsonSchema": "https://raw.githubusercontent.com/megabyte0x/claimed/main/schema/rewardVerification/rewardVerification.json"
     }
   },
@@ -81,7 +81,7 @@
     },
     "credentialSubject": {
       "type": "object",
-      "required": ["id", "isWinner"],
+      "required": ["id", "isWinner", "prizeId"],
       "properties": {
         "id": {
           "title": "Credential Subject ID",
@@ -90,6 +90,9 @@
         },
         "isWinner": {
           "type": "boolean"
+        },
+        "prizeId": {
+          "type": "string"
         }
       }
     }
