@@ -1,9 +1,9 @@
 import express, { Application, Request, Response } from 'express';
 import * as dotenv from 'dotenv';
 import cors from 'cors';
-// import router from './routes/index';
+import router from './routes/index';
 import cookieParser from 'cookie-parser';
-import { ErrorHandler } from './ErrorHandler.helper';
+import { ErrorHandler } from './helpers/ErrorHandler.helper';
 
 dotenv.config();
 const app: Application = express();
@@ -21,7 +21,7 @@ app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 //     next();
 // });
 
-// app.use('/api/v1', router)
+app.use('/api/v1', router)
 
 
 app.get('/', (_: Request, res: Response) => {

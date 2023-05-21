@@ -1,11 +1,40 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  did          String  @unique
+  email        String  @unique
+  prizeClaimed Claim[] @relation("UserClaimRelation")
+
+  @@map("users")
+}
+
+model Prize {
+  id              String  @id @default(auto()) @map("_id") @db.ObjectId
+  amount          BigInt
+  distriutedAmong Int     @map("distriuted_among")
+  winningAmount   BigInt  @map("winning_amount")
+  prizeClaimed    Claim[] @relation("PrizeClaimRelation")
+
+  @@map("prizes")
+}
+
+model Claim {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  pidClaimId String  @map("pid_claim_id")
+  isPaid     Boolean @unique @map("is_paid")
+  prizeId    String  @db.ObjectId
+  prize      Prize   @relation("PrizeClaimRelation", fields: [prizeId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  userId     String  @db.ObjectId
+  user       User    @relation("UserClaimRelation", fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@unique([prizeId, userId])
+  @@map("claims")
 }
