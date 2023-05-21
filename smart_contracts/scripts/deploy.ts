@@ -1,19 +1,24 @@
 import { ethers } from "hardhat";
+import hre from "hardhat";
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+  const [deployer] = await ethers.getSigners();
 
-  const lockedAmount = ethers.utils.parseEther("0.001");
+  console.log("Deploying contracts with the account:", deployer.address);
 
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  // We get the contract to deploy
+  const Quest = await ethers.getContractFactory("Quest");
+  const quest = await Quest.deploy();
 
-  await lock.deployed();
+  await quest.deployed();
 
-  console.log(
-    `Lock with ${ethers.utils.formatEther(lockedAmount)}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
-  );
+  console.log("Quest address:", quest.address);
+
+  // Verify the contract
+  await hre.run("verify:verify", {
+    address: "0xC8A35465e06d1C90c5664901116f885461dEB1E4",
+    constructorArguments: [],
+  });
 }
 
 // We recommend this pattern to be able to use async/await everywhere
