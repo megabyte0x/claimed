@@ -2,7 +2,7 @@ import { z } from "zod";
 
 
 
-const userSchema = z.object({
+const user = {
     did: z.string({
         required_error: "DID is required."
     }),
@@ -10,4 +10,6 @@ const userSchema = z.object({
         required_error: "Email is required",
         invalid_type_error: "Inavalid Email"
     }).email(),
-})
+}
+
+export const userSchema = z.object(user)
