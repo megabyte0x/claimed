@@ -1,10 +1,3 @@
-# isWinner
-
-A boolean value.
-
-```
-  "isWinner": true
-```
 
 # prizeId
 
