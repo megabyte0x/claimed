@@ -17,10 +17,6 @@
             "prizeId": {
               "@id": "vocab:prizeId",
               "@type": "xsd:string"
-            },
-            "isWinner": {
-              "@id": "vocab:isWinner",
-              "@type": "xsd:boolean"
             }
           }
         }
