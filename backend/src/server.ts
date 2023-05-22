@@ -3,11 +3,11 @@ import * as dotenv from 'dotenv';
 import cors from 'cors';
 import router from './routes/index';
 import cookieParser from 'cookie-parser';
-import { ErrorHandler } from './helpers/ErrorHandler.helper';
+import { ErrorHandler } from './helpers/errorHandler.helper';
 
 dotenv.config();
 const app: Application = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())

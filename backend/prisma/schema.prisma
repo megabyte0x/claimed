@@ -18,7 +18,7 @@ model User {
 
 model Prize {
   id              String  @id @default(auto()) @map("_id") @db.ObjectId
-  amount          BigInt
+  amount          Int
   distriutedAmong Int     @map("distriuted_among")
   prizeClaimed    Claim[] @relation("PrizeClaimRelation")
 
@@ -28,8 +28,9 @@ model Prize {
 model Claim {
   id            String  @id @default(auto()) @map("_id") @db.ObjectId
   pidClaimId    String  @map("pid_claim_id")
-  isPaid        Boolean @unique @map("is_paid")
-  winningAmount BigInt  @map("winning_amount")
+  isPaid        Boolean @map("is_paid")
+  qrString      String
+  winningAmount Int     @map("winning_amount")
   prizeId       String  @db.ObjectId
   prize         Prize   @relation("PrizeClaimRelation", fields: [prizeId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   userId        String  @db.ObjectId

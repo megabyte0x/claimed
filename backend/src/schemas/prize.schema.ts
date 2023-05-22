@@ -18,8 +18,10 @@ export const prizeSchema = z.object(prize)
 
 
 export const addAwardRequestSchema = z.object({
-    ...prize,
-    users: z.array(userSchema)
+    body: z.object({
+        ...prize,
+        users: z.array(userSchema)
+    })
 })
 
 export type AddAwardRequest = z.infer<typeof addAwardRequestSchema>

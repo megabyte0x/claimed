@@ -2,7 +2,7 @@ import { z } from "zod";
 
 
 
-const user = {
+export const user = {
     did: z.string({
         required_error: "DID is required."
     }),
