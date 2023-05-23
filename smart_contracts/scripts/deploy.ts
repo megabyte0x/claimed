@@ -1,29 +1,19 @@
 import { ethers } from "hardhat";
-import hre from "hardhat";
 
 async function main() {
-  const [deployer] = await ethers.getSigners();
+  const questContract = "Quest";
 
-  console.log("Deploying contracts with the account:", deployer.address);
+  const spongePoseidonLib = "0x12d8C87A61dAa6DD31d8196187cFa37d1C647153";
+  const poseidon6Lib = "0xb588b8f07012Dc958aa90EFc7d3CF943057F17d7";
 
-  // We get the contract to deploy
-  const Quest = await ethers.getContractFactory("Quest");
+  const Quest = await ethers.getContractFactory(questContract, {
+    libraries: {
+      SpongePoseidon: spongePoseidonLib,
+      PoseidonUnit6L: poseidon6Lib,
+    },
+  });
   const quest = await Quest.deploy();
 
   await quest.deployed();
-
-  console.log("Quest address:", quest.address);
-
-  // Verify the contract
-  await hre.run("verify:verify", {
-    address: "0xC8A35465e06d1C90c5664901116f885461dEB1E4",
-    constructorArguments: [],
-  });
+  console.log("Quest contract address:", quest.address);
 }
-
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
